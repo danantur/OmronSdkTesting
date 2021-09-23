@@ -80,16 +80,11 @@ class DeviceActivity : AppCompatActivity() {
 
         showLoad()
 
-        // Filter device to scan and connect (optional)
-
-        // Filter device to scan and connect (optional)
         if (device != null && device?.deviceInformation?.get(OmronConstants.OMRONBLEConfigDevice.GroupID) != null && device?.deviceInformation?.get(
                 OmronConstants.OMRONBLEConfigDevice.GroupIncludedGroupID
             ) != null
         ) {
 
-            // Add item
-            Log.e(TAG, device.toString())
             val filterDevices: MutableList<java.util.HashMap<String, String>> =
                 java.util.ArrayList()
             filterDevices.add(device!!.deviceInformation)
@@ -98,24 +93,13 @@ class DeviceActivity : AppCompatActivity() {
 
         var deviceSettings = java.util.ArrayList<java.util.HashMap<Any, Any>?>()
 
-        // Blood pressure settings (optional)
-
-        // Blood pressure settings (optional)
         deviceSettings = getBloodPressureSettings(deviceSettings)
 
         OmronPeripheralManagerConfig.deviceSettings = deviceSettings
-
-        // Set Scan timeout interval (optional)
         OmronPeripheralManagerConfig.timeoutInterval = 30
-        // Set User Hash Id (mandatory)
-        // Set User Hash Id (mandatory)
         OmronPeripheralManagerConfig.userHashId =
-            "<email_address_of_user>" // Set logged in user email
+            "<email_address_of_user>"
 
-
-        // Disclaimer: Read definition before usage
-
-        // Disclaimer: Read definition before usage
         if (device?.deviceInformation?.get(OmronConstants.OMRONBLEConfigDevice.Category)
                 ?.toInt() != OmronConstants.OMRONBLEDeviceCategory.ACTIVITY
         ) {
@@ -123,9 +107,6 @@ class DeviceActivity : AppCompatActivity() {
             OmronPeripheralManagerConfig.enableAllDataRead = true
         }
 
-        //Initialize the connection process.
-
-        //Initialize the connection process.
         OmronPeripheralManager.sharedManager(applicationContext)
             .startManager()
 
