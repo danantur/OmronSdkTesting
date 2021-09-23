@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">OmronSdkTesting</string>
+    <string name="device_connect">Сопряжение</string>
+    <string name="device_data">Получить данные</string>
+</resources>
