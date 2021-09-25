@@ -74,6 +74,7 @@ class SearchActivity : AppCompatActivity(), Client.StateCallback,
                 val intent = Intent(applicationContext, DeviceActivity::class.java)
                 intent.putExtra(DeviceActivity.MAC_ADDRESS, device.macAddress)
                 intent.putExtra(DeviceActivity.NAME, device.name)
+                intent.putExtra(DeviceActivity.IS_BONDED, client.inBonded(device.name!!, device.macAddress))
                 startActivity(intent)
             }
         })

@@ -52,6 +52,15 @@ class Client(ctx: Context, private val stateCallback: StateCallback,
         stateDisposable = getState()
     }
 
+    fun inBonded(name: String, mac: String): Boolean {
+        for (device in bleClient.bondedDevices) {
+            if (device.macAddress == mac && device.name == name) {
+                return true
+            }
+        }
+        return false
+    }
+
     private fun handleScanState(state: RxBleClient.State) {
         when (state) {
             RxBleClient.State.READY -> stateCallback.onReady()

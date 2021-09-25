@@ -29,6 +29,7 @@ class DeviceActivity : AppCompatActivity() {
     companion object {
         val MAC_ADDRESS = "MAC_ADDRESS"
         val NAME = "NAME"
+        val IS_BONDED = "IS_BONDED"
     }
 
     private val TAG: String = this::class.simpleName as String
@@ -50,6 +51,9 @@ class DeviceActivity : AppCompatActivity() {
         if (intent.getStringExtra(NAME) != null && intent.getStringExtra(MAC_ADDRESS) != null) {
             title = intent.getStringExtra(NAME)
             mac = intent.getStringExtra(MAC_ADDRESS)!!
+            if (intent.getBooleanExtra(IS_BONDED, false)) {
+                device = OmronPeripheral(title.toString(), mac)
+            }
         }
         else {
             throw Exception("intent without mac or name")
