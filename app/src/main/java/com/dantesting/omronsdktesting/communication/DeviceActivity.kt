@@ -107,7 +107,6 @@ class DeviceActivity : AppCompatActivity() {
         if (device?.deviceInformation?.get(OmronConstants.OMRONBLEConfigDevice.Category)
                 ?.toInt() != OmronConstants.OMRONBLEDeviceCategory.ACTIVITY
         ) {
-            // Reads all data from device.
             OmronPeripheralManagerConfig.enableAllDataRead = true
         }
 
